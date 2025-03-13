@@ -9,9 +9,7 @@ import torch.optim as optim
 from torchvision import models
 
 from utils import model_backbone_v2
-from dataloaders import fitzpatric17k_dataloader_score_v2, fitzpatric17k_dataloader_score_v3, \
-                        celeba_dataloader_score_v2, \
-                        isic2019_dataloader_score_v2, isic2019_dataloader_score_v3
+from dataloaders import fitzpatric17k_dataloader_score_v2, celeba_dataloader_score_v2, isic2019_dataloader_score_v2
 
 
 parser = argparse.ArgumentParser(description='Pre-train')
@@ -106,10 +104,6 @@ if __name__ == "__main__":
         else:
             raise NotImplementedError
         f_attr = "skin_color_binary"
-        # if args.pre_load == 1:
-        #     trainloader, valloader, _, _ = fitzpatric17k_dataloader_score_v3(args.batch_size, args.workers, image_dir, csv_file_name, ctype, device, True, True, False)
-        # else:
-        #     trainloader, valloader, _, _ = fitzpatric17k_dataloader_score_v2(args.batch_size, args.workers, image_dir, csv_file_name, ctype)
         trainloader, valloader, _, _ = fitzpatric17k_dataloader_score_v2(args.batch_size, args.workers, image_dir, csv_file_name, ctype)
     elif args.dataset == "celeba":
         if args.csv_file_name is None:
@@ -124,10 +118,6 @@ if __name__ == "__main__":
         num_classes = 2
         ctype = "y_attr"
         f_attr = "fair_attr"
-        # if args.pre_load == 1:
-        #     raise NotImplementedError
-        # else:
-        #     trainloader, valloader, _, _ = celeba_dataloader_score_v2(args.batch_size, args.workers, image_dir, csv_file_name, args.fair_attr, args.y_attr)
         trainloader, valloader, _, _ = celeba_dataloader_score_v2(args.batch_size, args.workers, image_dir, csv_file_name, args.fair_attr, args.y_attr)
     elif args.dataset == "isic2019":
         if args.csv_file_name is None:
@@ -142,10 +132,6 @@ if __name__ == "__main__":
         num_classes = 8
         ctype = "y_attr"
         f_attr = "fair_attr"
-        # if args.pre_load == 1:
-        #     trainloader, valloader, _, _ = isic2019_dataloader_score_v3(args.batch_size, args.workers, image_dir, csv_file_name, device, True, True, False)
-        # else:
-        #     trainloader, valloader, _, _ = isic2019_dataloader_score_v2(args.batch_size, args.workers, image_dir, csv_file_name, use_val=True)
         trainloader, valloader, _, _ = isic2019_dataloader_score_v2(args.batch_size, args.workers, image_dir, csv_file_name, use_val=True)
     else:
         raise NotImplementedError

@@ -1,8 +1,12 @@
 # StructuredFairPrune: Fairness-aware Structured Pruning
 
-Repo for paper **Fairness-aware Structured Pruning of Deep Learning Models** (submitted to TCAD).
+Repo for paper **Fairness-aware Structured Pruning of Deep Learning Models** (submitted to TPAMI).
 
 ## Update
+
+### 3/13/2025
+
+Prepare for submission to TPAMI; remove some comments.
 
 ### 1/29/2025
 
